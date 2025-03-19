@@ -109,8 +109,7 @@ bool http_conn::read() {
     int bytes_read = 0;
     while(true) {
         // 从m_read_buf + m_read_idx索引出开始保存数据，大小是READ_BUFFER_SIZE - m_read_idx
-        bytes_read = recv(m_sockfd, m_read_buf + m_read_idx, 
-        READ_BUFFER_SIZE - m_read_idx, 0 );
+        bytes_read = recv(m_sockfd, m_read_buf + m_read_idx, READ_BUFFER_SIZE - m_read_idx, 0);
         if (bytes_read == -1) {
             if( errno == EAGAIN || errno == EWOULDBLOCK ) {
                 // 没有数据
